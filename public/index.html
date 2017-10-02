@@ -71,11 +71,6 @@
 
 </section>
 
-<!---------------------->
-<!-- Required scripts -->
-
-<!-- Jquery is only used in popoto.js to send ajax POST request on Neo4j REST API -->
-<!-- This dependency will probably be removed in future releases -->
 <script src="js/jquery-2.1.0.min.js" charset="utf-8"></script>
 
 <script src="js/d3.v3.min.js" charset="utf-8"></script>
@@ -95,16 +90,19 @@
         return false;
     });
 
+    var personPredefinedConstraints = [];
+
     function filterData() {
         var value = d3.select("#constraint")[0][0].value;
         inputValue = value;
+        personPredefinedConstraints = [value];
         console.log('input value is', inputValue);
-        send(inputValue);
+//        send(inputValue);
         // Recreate taxonomies panel
-//        d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
-//        popoto.taxonomy.createTaxonomyPanel();
-//
-//        popoto.tools.reset();
+        d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
+        popoto.taxonomy.createTaxonomyPanel();
+
+        popoto.tools.reset();
     }
 
     function send(value) {
@@ -133,17 +131,25 @@
     popoto.rest.CYPHER_URL = "http://localhost:7474/db/data/transaction/commit";
     popoto.rest.AUTHORIZATION = "Basic " + btoa("neo4j:nIro");
     popoto.provider.nodeProviders = {
-        "company": {
+        "Position": {
+            "returnAttributes": ["name"],
+            "constraintAttribute": "name",
+            "autoExpandRelations": true,
+            "getPredefinedConstraints": function (node) {
+                return personPredefinedConstraints;
+            },
+        },
+        "Employee": {
             "returnAttributes": ["name"],
             "constraintAttribute": "name",
             "autoExpandRelations": true
         },
-        "location": {
+        "Skills": {
             "returnAttributes": ["name"],
             "constraintAttribute": "name",
             "autoExpandRelations": true
         },
-        "buildings": {
+        "Vehicle": {
             "returnAttributes": ["name"],
             "constraintAttribute": "name",
             "autoExpandRelations": true
@@ -154,7 +160,9 @@
         document.getElementById("result-total-count").innerHTML = "(" + count + ")";
     });
 
-    popoto.start("company");
+    popoto.start("Employee");
 </script>
 </body>
 </html>
+<!--$identifier.name = 'sse'-->
+<!--$identifier.name IN ["sse"]-->
