@@ -82,6 +82,54 @@
 <script src="js/popoto.min.js" charset="utf-8"></script>
 
 <script>
+    var accessToken = "4bd93c3337ca4d199b272cdf3a5ed514";
+    var baseUrl = "https://api.api.ai/v1/";
+    var inputValue;
+
+    d3.select("#filter-button").on("click", function (d) {
+        filterData();
+    });
+    d3.select("#filter-form").on("submit", function () {
+        d3.event.preventDefault();
+        filterData();
+        return false;
+    });
+
+    function filterData() {
+        var value = d3.select("#constraint")[0][0].value;
+        inputValue = value;
+        console.log('input value is', inputValue);
+        send(inputValue);
+        // Recreate taxonomies panel
+//        d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
+//        popoto.taxonomy.createTaxonomyPanel();
+//
+//        popoto.tools.reset();
+    }
+
+    function send(value) {
+        console.log('api ai has been called');
+        var text = value;
+        $.ajax({
+            type: "POST",
+            url: baseUrl + "query?v=20150910",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            headers: {
+                "Authorization": "Bearer " + accessToken
+            },
+            data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
+            success: function(data) {
+                console.log('api.ai response', data);
+            },
+            error: function() {
+                console.log('api.ai error response', data);
+            }
+        });
+//        setResponse("Loading...");
+    }
+
+
     popoto.rest.CYPHER_URL = "http://localhost:7474/db/data/transaction/commit";
     popoto.rest.AUTHORIZATION = "Basic " + btoa("neo4j:nIro");
     popoto.provider.nodeProviders = {
