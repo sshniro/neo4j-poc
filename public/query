@@ -1,0 +1,208 @@
+create (:Employee{name:"Nirojan", mobile: "0779823445", email : "nselvanathan@mitrai.com"})
+create (:Employee{name:"Anusha", mobile: "0773333333", email : "anusha@mitrai.com"})
+create (:Employee{name:"Heshawa", email: "Heshawa@mitrai.com"})
+create (:Employee{name:"Madhuka", mobile : "0773333333", email : "madhuka@mitrai.com"})
+create (:Employee{name:"Priyashani", mobile : "0773333333", email : "Priyashani@mitrai.com"})
+create (:Employee{name:"Prabod", mobile : "0773333333", email : "Prabod@mitrai.com"})
+create (:Employee{name:"IsuruS", mobile : "0773333333", email : "IsuruS@mitrai.com"})
+create (:Employee{name:"Kalhan", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Ewanatha", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Pumudu", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Randima", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Saad", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Thusitha", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Thimitha", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"IsuruG", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Lakshani", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Neranjan", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Srirankan", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Suresh", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Nisal", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Imalka", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Sawani", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Jenanathan", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Chandika", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Channa", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Thara", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Erandika", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Jagath", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Nadun", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+create (:Employee{name:"Kasun", mobile : "0773333333", email : "Kalhan@mitrai.com"})
+
+create (:Team{name:"Fusion"})
+create (:Team{name:"Optimus"})
+create (:Team{name:"Socium"})
+create (:Team{name:"Amicus"})
+
+create (:Project{name:"Travis Perkins"})
+create (:Project{name:"RnD"})
+
+create (:ProjectTypes{name:"Integration"})
+create (:ProjectTypes{name:"Product"})
+
+create (:CarPark{name:"New Building"})
+create (:CarPark{name:"Old Building"})
+create (:CarPark{name:"Main"})
+
+WITH count(*) as dummy
+
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Anusha"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Randima"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Ewantha"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Nadun"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Thusitha"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Thimitha"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Pumudu"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Saad"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Madhuka"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Priyashani"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Prabod"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"IsuruS"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Kalhan"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Heshawa"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Naduna"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Kasun"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"IsuruG"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Lakshani"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Neranjan"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Imalka"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Srirankan"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Suresh"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Nisal"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+
+MATCH (t:Team {name:"Amicus"}),(u:Employee {name:"Sawani"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Chandika"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Channa"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Thara"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Erandika"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Jennathan"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Kasun"})
+CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy
+
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Saad' AND b.name = 'Anusha'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Thusitha' AND b.name = 'Anusha'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Thimitha' AND b.name = 'Anusha'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Nisal' AND b.name = 'Anusha'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Erandika' AND b.name = 'Anusha'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Lakshani' AND b.name = 'Anusha'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Randima' AND b.name = 'Madhuka'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Priyashani' AND b.name = 'Madhuka'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'Probod' AND b.name = 'Madhuka'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = 'IsuruS' AND b.name = 'Madhuka'
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = "Kalhan" AND b.name = "Madhuka"
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+MATCH (a:Employee),(b:Employee)
+WHERE a.name = "Randima" AND b.name = "Madhuka"
+CREATE (a)-[r:REPORTED_TO]->(b)
+WITH count(*) as dummy
+
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Anusha"})
+CREATE (t)-[r:LEAD_BY]->(u) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Madhuka"})
+CREATE (t)-[r:LEAD_BY]->(u) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Isuru"})
+CREATE (t)-[r:LEAD_BY]->(u) WITH count(*) as dummy
+MATCH (t:Team {name:"Amicus"}),(u:Employee {name:"Sawani"})
+CREATE (t)-[r:LEAD_BY]->(u) WITH count(*) as dummy
+
+MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Jagath"})
+CREATE (t)-[r:ARCHITECTED_BY]->(u) WITH count(*) as dummy
+MATCH (t:Team {name:"Optimus"}),(u:Employee {name:"Jagath"})
+CREATE (t)-[r:ARCHITECTED_BY]->(u) WITH count(*) as dummy
+MATCH (t:Team {name:"Socium"}),(u:Employee {name:"Jagath"})
+CREATE (t)-[r:ARCHITECTED_BY]->(u) WITH count(*) as dummy
+MATCH (t:Team {name:"Amicus"}),(u:Employee {name:"Jagath"})
+CREATE (t)-[r:ARCHITECTED_BY]->(u) WITH count(*) as dummy
+
+
+create (:Skills{name:"Java"})
+create (:Skills{name:"Scala"})
+create (:Skills{name:"php"})
+create (:Skills{name:"NodeJS"})
+create (:Skills{name:"wso2"})
+create (:Skills{name:"html"})
+create (:Skills{name:"aws"})
+create (:Skills{name:".net"})
+create (:Skills{name:"gcp"})
+
+create (:Position{name:"SE"})
+create (:Position{name:"SSE"})
+create (:Position{name:"TL"})
+create (:Position{name:"Architect"})
+
+create (:Vehicle{name:"CAU-5076"})
+create (:Vehicle{name:"CAG-9740",owner_name:"Ayantha Philip Martil",mobile:"0779073986"})
+
+WITH count(*) as dummy
+
+Match (n:Employee{name:"Nirojan"}),(s:Skills) where s.name IN ["Java","php","NodeJs"] create (n)-[:Knows]->(s) WITH count(*) as dummy
+Match (n:Employee{name:"Anusha"}),(s:Skills) where s.name IN ["wso2", "Java"] create (n)-[:Knows]->(s)  WITH count(*) as dummy
+Match (n:Employee{name:"Heshawa"}),(s:Skills) where s.name IN ["wso2", "Java","aws"] create (n)-[:Knows]->(s)  WITH count(*) as dummy
+
+Match (n:Employee{name:"Nirojan"}),(p:Position{name:"SSE"}) create (n)-[:position]->(p) WITH count(*) as dummy
+Match (n:Employee{name:"Anusha"}),(p:Position{name:"TL"}) create (n)-[:position]->(p) WITH count(*) as dummy
+
+Match (n:Employee{name:"Nirojan"}),(v:Vehicle{name:"CAU-5076"}) create (n)-[:owns]->(v)

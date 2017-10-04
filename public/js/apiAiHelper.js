@@ -24,6 +24,7 @@ function send(value) {
 function resolveIntent(data) {
     if(data.result.metadata.intentName == "interview_schedule") {
         positionPredifinedConstraints = ["$identifier.name IN [\"" + data.result.parameters.positions + "\",\"TL\"]"];
+        console.log('query is', positionPredifinedConstraints);
     }
 
     d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
