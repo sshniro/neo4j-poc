@@ -1,3 +1,63 @@
+create (:Company{name:"Mitrai"})
+
+create (:Location{name:"SL"})
+create (:Location{name:"UK"})
+create (:Location{name:"AU"})
+
+create (:Buildings{name:"Old Office"})
+create (:Buildings{name:"New Office"})
+
+create (:Room{name:"L3-Aries", occupancy: 8})
+create (:Room{name:"L3-Hercules", occupancy: 6, equipment: "TV"})
+
+create (:Room{name:"L2-Kadupul", occupancy: 9, equipment: "TV"})
+create (:Room{name:"L2-Nelum", occupancy: 9, equipment: "TV"})
+create (:Room{name:"L2-Araliya", occupancy: 5})
+
+create (:Room{name:"L3-Kapuru", occupancy: 3})
+create (:Room{name:"L3-Olu", occupancy: 9})
+create (:Room{name:"L3-Bovitiya", occupancy: 3})
+create (:Room{name:"L3-Sepalika", occupancy: 3})
+create (:Room{name:"L3-Manel", occupancy: 3, equipment: "TV"})
+
+WITH count(*) as dummy
+
+MATCH (c:Company{name:"Mitrai"}),(l:Location{name:"SL"})
+CREATE (c)-[r:Location]->(l) WITH count(*) as dummy
+MATCH (c:Company{name:"Mitrai"}),(l:Location{name:"UK"})
+CREATE (c)-[r:Location]->(l) WITH count(*) as dummy
+MATCH (c:Company{name:"Mitrai"}),(l:Location{name:"AU"})
+CREATE (c)-[r:Location]->(l) WITH count(*) as dummy
+
+MATCH (b:Buildings{name:"Old Office"}),(l:Location{name:"SL"})
+CREATE (l)-[r:Office]->(b) WITH count(*) as dummy
+MATCH (b:Buildings{name:"New Office"}),(l:Location{name:"SL"})
+CREATE (l)-[r:Office]->(b) WITH count(*) as dummy
+
+MATCH (b:Buildings{name:"Old Office"}),(m:Room{name:"L3-Aries"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+MATCH (b:Buildings{name:"Old Office"}),(m:Room{name:"L3-Hercules"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+
+MATCH (b:Buildings{name:"New Office"}),(m:Room{name:"L2-Araliya"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+MATCH (b:Buildings{name:"Old Office"}),(m:Room{name:"L2-Nelum"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+MATCH (b:Buildings{name:"Old Office"}),(m:Room{name:"L2-Kadupul"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+
+MATCH (b:Buildings{name:"New Office"}),(m:Room{name:"L3-Sepalika"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+MATCH (b:Buildings{name:"Old Office"}),(m:Room{name:"L3-Bovitiya"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+MATCH (b:Buildings{name:"Old Office"}),(m:Room{name:"L3-Olu"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+MATCH (b:Buildings{name:"New Office"}),(m:Room{name:"L3-Kapuru"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+MATCH (b:Buildings{name:"Old Office"}),(m:Room{name:"L3-Manel"})
+CREATE (b)-[r:has_Room]->(m) WITH count(*) as dummy
+
+
 create (:Employee{name:"Nirojan", mobile: "0779823445", email : "nselvanathan@mitrai.com"})
 create (:Employee{name:"Anusha", mobile: "0773333333", email : "anusha@mitrai.com"})
 create (:Employee{name:"Heshawa", email: "Heshawa@mitrai.com"})
@@ -45,6 +105,9 @@ create (:CarPark{name:"Old Building"})
 create (:CarPark{name:"Main"})
 
 WITH count(*) as dummy
+
+MATCH (c:Company{name:"Mitrai"}),(e:Employee)
+CREATE (c)-[r:Employs]->(e) WITH count(*) as dummy
 
 MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Anusha"})
 CREATE (u)-[r:TEAM_IN]->(t) WITH count(*) as dummy

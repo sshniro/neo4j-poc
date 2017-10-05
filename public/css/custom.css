@@ -102,17 +102,17 @@ body {
 
 .ppt-node-text-root {
     font-size: 10px;
-    fill: #ffffff;
+    fill: #7180ff;
 }
 
 .ppt-node-text-choose {
     font-size: 10px;
-    fill: #ffffff;
+    fill: #3b9bf9;
 }
 
 .ppt-node-text-value {
     font-size: 10px;
-    fill: #ffffff;
+    fill: #7180ff;
 }
 
 .ppt-node-text-group {
@@ -175,7 +175,7 @@ body {
 .ppt-count-box.value {
     fill: #FB95AF;
     stroke: #E0849B;
-    stroke-width: 2px;
+    stroke-width: 1px;
 }
 
 .ppt-count-box.root {

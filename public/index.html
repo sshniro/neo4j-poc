@@ -30,8 +30,9 @@
 <!-- Required scripts -->
 <script src="./js/jquery-2.1.0.min.js" charset="utf-8"></script>
 <script src="./js/d3.v3.min.js" charset="utf-8"></script>
-<script src="./js/popoto.min.js" charset="utf-8"></script>
+<script src="./src/js/popoto.js" charset="utf-8"></script>
 <script src="./js/vis.min.js"></script>
+<script src="./js/popotoHelper.js"></script>
 <script>
 
     function UrlExists(url)
@@ -45,7 +46,8 @@
     // Change ellipses dimension to have circles
     popoto.graph.node.ELLIPSE_RX = 40;
     popoto.graph.node.ELLIPSE_RY = 40;
-    popoto.graph.node.TEXT_Y = 6;
+    popoto.graph.node.TEXT_Y = 51;
+//    popoto.graph.node.TE
     popoto.graph.LINK_DISTANCE = 150;
     popoto.graph.node.BACK_CIRCLE_R = 48;
 
@@ -59,115 +61,6 @@
     popoto.graph.node.NODE_MAX_CHARS = 13;
 
     // Define the list of label provider to customize the graph behavior:
-    popoto.provider.nodeProviders = {
-        "Position": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-//            "autoExpandRelations": true,
-//            "getPredefinedConstraints": function (node) {
-//                return positionPredifinedConstraints;
-//            },
-        },
-        "Team": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-//            "autoExpandRelations": true,
-        },
-        "Team": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-//            "autoExpandRelations": true,
-        },
-        "Employee": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-            "autoExpandRelations": true,
-            "getDisplayType": function (node) {
-                return popoto.provider.NodeDisplayTypes.IMAGE;
-            },
-            "getImagePath": function (node) {
-                var path = "./image/employee/person_green.svg";
-                if (node.type === popoto.graph.node.NodeTypes.VALUE) {
-                    path = "./image/employee/" + node.attributes.name + ".gif"
-                    if(!UrlExists(path)) {
-                        path = "./image/employee/person_green.svg";
-                    }
-                } else {
-                    if (node.value !== undefined) {
-                        path = "./image/employee/" + node.value.attributes.name + ".gif"
-                        if(!UrlExists(path)) {
-                            path = "./image/employee/person_green.svg";
-                        }
-                    } else {
-                        if (node.type === popoto.graph.node.NodeTypes.ROOT) {
-                            path = "./image/employee/person_blue.svg";
-                        } else {
-                            if (node.count == 0) {
-                                path = "./image/employee/person_disabled.svg";
-                            } else {
-                                path = "./image/employee/person_green.svg";
-                            }
-                        }
-                    }
-                }
-//                path = "./image/employee/test.GIF";
-                return path;
-            },
-            "getImageWidth": function (node) {
-                var min = 50;
-                var max = 175;
-                var size = 125;
-
-                if (node.hasOwnProperty("count")) {
-                    size = node.count * 20; // better calculate size here
-
-                    if (size < min) {
-                        size = min;
-                    }
-                    if (size > max) {
-                        size = max;
-                    }
-                }
-
-                return size;
-            },
-            "getImageHeight": function (node) {
-                var min = 50;
-                var max = 175;
-                var size = 125;
-
-                if (node.hasOwnProperty("count")) {
-                    size = node.count * 20; // better calculate size here
-
-                    if (size < min) {
-                        size = min;
-                    }
-                    if (size > max) {
-                        size = max;
-                    }
-                }
-
-                return size;
-            },
-            "displayResults": function (pResultElmt) {
-//                console.log(pResultElmt);
-            },
-            "getIsTextDisplayed": function (node) {
-                return false;
-            },
-
-        },
-        "Skills": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-            "autoExpandRelations": true
-        },
-        "Vehicle": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-            "autoExpandRelations": true
-        }
-    };
 
     // Change the number of displayed results:
     popoto.query.RESULTS_PAGE_SIZE = 7;
@@ -252,7 +145,7 @@
 //    }
 
     // Start the generation using parameter as root label of the query.
-    popoto.start("Employee");
+    popoto.start("Company");
 
 </script>
 </body>
