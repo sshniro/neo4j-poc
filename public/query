@@ -1,4 +1,4 @@
-create (:Company{name:"Mitrai"})
+create (:Mitrai{name:"Mitrai"})
 
 create (:Location{name:"SL"})
 create (:Location{name:"UK"})
@@ -22,11 +22,11 @@ create (:Room{name:"L3-Manel", occupancy: 3, equipment: "TV"})
 
 WITH count(*) as dummy
 
-MATCH (c:Company{name:"Mitrai"}),(l:Location{name:"SL"})
+MATCH (c:Mitrai{name:"Mitrai"}),(l:Location{name:"SL"})
 CREATE (c)-[r:Location]->(l) WITH count(*) as dummy
-MATCH (c:Company{name:"Mitrai"}),(l:Location{name:"UK"})
+MATCH (c:Mitrai{name:"Mitrai"}),(l:Location{name:"UK"})
 CREATE (c)-[r:Location]->(l) WITH count(*) as dummy
-MATCH (c:Company{name:"Mitrai"}),(l:Location{name:"AU"})
+MATCH (c:Mitrai{name:"Mitrai"}),(l:Location{name:"AU"})
 CREATE (c)-[r:Location]->(l) WITH count(*) as dummy
 
 MATCH (b:Buildings{name:"Old Office"}),(l:Location{name:"SL"})
@@ -106,7 +106,7 @@ create (:CarPark{name:"Main"})
 
 WITH count(*) as dummy
 
-MATCH (c:Company{name:"Mitrai"}),(e:Employee)
+MATCH (c:Mitrai{name:"Mitrai"}),(e:Employee)
 CREATE (c)-[r:Employs]->(e) WITH count(*) as dummy
 
 MATCH (t:Team {name:"Fusion"}),(u:Employee {name:"Anusha"})

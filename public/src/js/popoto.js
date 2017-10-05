@@ -1688,18 +1688,18 @@ popoto = function () {
                 return d.type !== popoto.graph.node.NodeTypes.GROUP;
             });
 
-            countForeground
-                .append("rect")
-                .attr("x", popoto.graph.node.CountBox.x)
-                .attr("y", popoto.graph.node.CountBox.y)
-                .attr("width", popoto.graph.node.CountBox.w)
-                .attr("height", popoto.graph.node.CountBox.h)
-                .attr("class", "ppt-count-box");
+            // countForeground
+            //     .append("rect")
+            //     .attr("x", popoto.graph.node.CountBox.x)
+            //     .attr("y", popoto.graph.node.CountBox.y)
+            //     .attr("width", popoto.graph.node.CountBox.w)
+            //     .attr("height", popoto.graph.node.CountBox.h)
+            //     .attr("class", "ppt-count-box");
 
             countForeground
                 .append("text")
-                .attr("x", 42)
-                .attr("y", 48)
+                .attr("x", 50)
+                .attr("y", '10%')
                 .attr("text-anchor", "middle")
                 .attr("class", "ppt-count-text");
         }

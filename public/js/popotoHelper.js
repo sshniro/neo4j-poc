@@ -1,7 +1,7 @@
-popoto.graph.node.CountBox = {x: 16, y: 33, w: 20, h: 19};
-popoto.graph.DISABLE_COUNT = true;
+// popoto.graph.node.CountBox = {x: 16, y: 33, w: 20, h: 19};
+// popoto.graph.DISABLE_COUNT = true;
 function imageWidth(node, mul) {
-    var min = 50;
+    var min = 100;
     var max = 175;
     var size = 125;
 
@@ -9,7 +9,7 @@ function imageWidth(node, mul) {
         // size = node.count * 20; // better calculate size here
         size = node.count; // better calculate size here
         if(mul)
-            size = size * mul
+            size = size * mul;
 
         if (size < min) {
             size = min;
@@ -23,7 +23,7 @@ function imageWidth(node, mul) {
 }
 
 function getImageHeight(node, mul) {
-    var min = 50;
+    var min = 100;
     var max = 175;
     var size = 125;
 
@@ -47,7 +47,7 @@ function getImageHeight(node, mul) {
 
 
 popoto.provider.nodeProviders = {
-    "Company": {
+    "Mitrai": {
         "returnAttributes": ["name"],
         "constraintAttribute": "name",
         "autoExpandRelations": true,
