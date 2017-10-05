@@ -1,7 +1,7 @@
 // popoto.graph.node.CountBox = {x: 16, y: 33, w: 20, h: 19};
-// popoto.graph.DISABLE_COUNT = true;
+popoto.graph.DISABLE_COUNT = true;
 function imageWidth(node, mul) {
-    var min = 100;
+    var min = 50;
     var max = 175;
     var size = 125;
 
@@ -23,7 +23,7 @@ function imageWidth(node, mul) {
 }
 
 function getImageHeight(node, mul) {
-    var min = 100;
+    var min = 50;
     var max = 175;
     var size = 125;
 
@@ -55,7 +55,7 @@ popoto.provider.nodeProviders = {
             return popoto.provider.NodeDisplayTypes.IMAGE;
         },
         "getImagePath": function (node) {
-            return "./image/common/idea.png";
+            return "./image/common/mitra_2.gif";
         },
         "getImageWidth": function(node){
             return imageWidth(node,80)
@@ -161,7 +161,7 @@ popoto.provider.nodeProviders = {
             return popoto.provider.NodeDisplayTypes.IMAGE;
         },
         "getImagePath": function (node) {
-            var path = "./image/employee/person_green.svg";
+            var path = "./image/common/employee_1.png";
             if (node.type === popoto.graph.node.NodeTypes.VALUE) {
                 path = "./image/employee/" + node.attributes.name + ".gif"
                 if(!UrlExists(path)) {
@@ -180,7 +180,7 @@ popoto.provider.nodeProviders = {
                         if (node.count == 0) {
                             path = "./image/employee/person_disabled.svg";
                         } else {
-                            path = "./image/employee/person_green.svg";
+                            path = "./image/common/employee_1.png";
                         }
                     }
                 }
@@ -211,93 +211,51 @@ popoto.provider.nodeProviders = {
         "returnAttributes": ["name"],
         "constraintAttribute": "name",
         "autoExpandRelations": true
+    },
+    "Service": {
+        "returnAttributes": ["name"],
+        "constraintAttribute": "name",
+        "autoExpandRelations": true,
+        "getDisplayType": function (node) {
+            return popoto.provider.NodeDisplayTypes.IMAGE;
+        },
+        "getImagePath": function (node) {
+            return "./image/common/cloud.png";
+        },
+        "getImageWidth": function(node){
+            return imageWidth(node)
+        },
+        "getImageHeight": function (node) {
+            return getImageHeight(node);
+        },
+        "getIsTextDisplayed": function (node) {
+            return false;
+        },
+    },
+    "Client": {
+        "returnAttributes": ["name"],
+        "constraintAttribute": "name",
+        "autoExpandRelations": true,
+        "getDisplayType": function (node) {
+            return popoto.provider.NodeDisplayTypes.IMAGE;
+        },
+        "getImagePath": function (node) {
+            return "./image/common/clients.png";
+        },
+        "getImageWidth": function(node){
+            return imageWidth(node)
+        },
+        "getImageHeight": function (node) {
+            return getImageHeight(node);
+        },
+        "getIsTextDisplayed": function (node) {
+            return false;
+        },
     }
 };
 
 
 function employeeQuery() {
-    popoto.provider.nodeProviders = {
-        "Position": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-        },
-        "Team": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-            "getDisplayType": function (node) {
-                return popoto.provider.NodeDisplayTypes.IMAGE;
-            },
-            "getImagePath": function (node) {
-                return "./image/common/team.png";
-            },
-            "getImageWidth": function(node){
-                return imageWidth(node)
-            },
-            "getImageHeight": function (node) {
-                return getImageHeight(node);
-            }
-        },
-        "Employee": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-            // "autoExpandRelations": true,
-            "getDisplayType": function (node) {
-                return popoto.provider.NodeDisplayTypes.IMAGE;
-            },
-            "getImagePath": function (node) {
-                var path = "./image/employee/person_green.svg";
-                if (node.type === popoto.graph.node.NodeTypes.VALUE) {
-                    path = "./image/employee/" + node.attributes.name + ".gif"
-                    if(!UrlExists(path)) {
-                        path = "./image/employee/person_green.svg";
-                    }
-                } else {
-                    if (node.value !== undefined) {
-                        path = "./image/employee/" + node.value.attributes.name + ".gif"
-                        if(!UrlExists(path)) {
-                            path = "./image/employee/person_green.svg";
-                        }
-                    } else {
-                        if (node.type === popoto.graph.node.NodeTypes.ROOT) {
-                            path = "./image/employee/person_blue.svg";
-                        } else {
-                            if (node.count == 0) {
-                                path = "./image/employee/person_disabled.svg";
-                            } else {
-                                path = "./image/employee/person_green.svg";
-                            }
-                        }
-                    }
-                }
-//                path = "./image/employee/test.GIF";
-                return path;
-            },
-            "getImageWidth": function(node){
-                return imageWidth(node)
-            },
-            "getImageHeight": function (node) {
-                return getImageHeight(node);
-            },
-            "displayResults": function (pResultElmt) {
-//                console.log(pResultElmt);
-            },
-            "getIsTextDisplayed": function (node) {
-                return false;
-            },
-
-        },
-        "Skills": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-            "autoExpandRelations": true
-        },
-        "Vehicle": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name",
-            "autoExpandRelations": true
-        }
-    }
-
     d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
     popoto.taxonomy.createTaxonomyPanel();
     // popoto.start("Employee");
