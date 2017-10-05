@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Popoto Search</title>
+    <link rel="stylesheet" href="css/popoto.min.css">
+    <style>
+        #popoto-graph:fullscreen {
+            width: 100%;
+            height: 100%;
+        }
+
+        #popoto-graph:-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+
+        #popoto-graph:-moz-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+
+        #popoto-graph:-ms-fullscreen {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="ppt-body">
+
+
+<section class="ppt-section-main">
+
+    <div class="ppt-section-header" style="height: 105px; line-height: 45px;">
+        <span class="ppt-header-span">Neo4j movie graph -</span> Predefined constraint search in attribute
+        <form id="filter-form">
+            <label>
+                <input id="constraint" type="text" style="width: 500px;" value="">
+            </label>
+            <input id="filter-button" type="button" value="Filter">
+        </form>
+    </div>
+
+
+    <div class="ppt-container-graph">
+        <nav id="popoto-taxonomy" class="ppt-taxo-nav">
+            <!-- Label/taxonomy filter will be generated here -->
+        </nav>
+        <div id="popoto-graph" class="ppt-div-graph">
+            <!-- Graph will be generated here-->
+        </div>
+    </div>
+
+    <div id="popoto-query" class="ppt-container-query">
+        <!-- Query viewer will be generated here -->
+    </div>
+
+    <div id="popoto-cypher" class="ppt-container-cypher">
+        <!-- Cypher query viewer will be generated here -->
+    </div>
+
+    <div class="ppt-section-header">
+        <!-- The total results count is updated with a listener defined below -->
+        RESULTS <span id="result-total-count" class="ppt-count"></span>
+    </div>
+
+    <!--<div id="popoto-results" class="ppt-container-results">-->
+        <!-- Results will be generated here -->
+    <!--</div>-->
+
+</section>
+
+<script src="js/jquery-2.1.0.min.js" charset="utf-8"></script>
+
+<script src="js/d3.v3.min.js" charset="utf-8"></script>
+<script src="js/popoto.min.js" charset="utf-8"></script>
+<script src="js/helper.js" charset="utf-8"></script>
+<script src="js/apiAiHelper.js" charset="utf-8"></script>
+<script src="js/eventHelper.js" charset="utf-8"></script>
+<script src="js/popotoHelper.js" charset="utf-8"></script>
+
+<script>
+    var accessToken = "4bd93c3337ca4d199b272cdf3a5ed514";
+    var baseUrl = "https://api.api.ai/v1/";
+    var inputValue;
+
+    var positionPredifinedConstraints = [];
+
+    popoto.rest.CYPHER_URL = "http://localhost:7474/db/data/transaction/commit";
+    popoto.rest.AUTHORIZATION = "Basic " + btoa("neo4j:nIro");
+    popoto.result.onTotalResultCount(function (count) {
+        document.getElementById("result-total-count").innerHTML = "(" + count + ")";
+    });
+
+    popoto.start("Employee");
+</script>
+</body>
+</html>
+<!--$identifier.name = 'sse'-->
+<!--$identifier.name IN ["sse"]-->
