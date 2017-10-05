@@ -1,5 +1,5 @@
 function send(value) {
-    console.log('api ai has been called');
+    console.log('api ai has been called', value);
     var text = value;
     $.ajax({
         type: "POST",
@@ -23,11 +23,16 @@ function send(value) {
 
 function resolveIntent(data) {
     if(data.result.metadata.intentName == "interview_schedule") {
-        positionPredifinedConstraints = ["$identifier.name IN [\"" + data.result.parameters.positions + "\",\"TL\"]"];
+        positionPredifinedConstraints = ["$identifier.name IN [\"" + data.result.parameters.positions + "\"]"];
+        employeeConstraints = ["$identifier.position IN [\"" + data.result.parameters.positions + "\"]"];
+        console.log('predified', positionPredifinedConstraints);
         console.log('query is', positionPredifinedConstraints);
+        popoto.provider.nodeProviders.Employee["autoExpandRelations"] = true;
+        updateTheGraph("Employee")
     }
 
-    d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
-    popoto.taxonomy.createTaxonomyPanel();
-    popoto.tools.reset();
+
+    // d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
+    // popoto.taxonomy.createTaxonomyPanel();
+    // popoto.tools.reset();
 }
