@@ -24,7 +24,10 @@ function send(value) {
 function updateCarPark(value, park) {
     // console.log('Update carpark', value);
     // var text = {  query : "MATCH (a:CarPark) WHERE a.name = 'Main' SET a.occupant= 1 +a.occupant ,  a.description = 'XS 12345' + a.description RETURN a.description, a.name, a.occupant\",  \"params\" : { }};
-    var text = '{ "query" : "MATCH (a:CarPark) WHERE a.name =\'Main\'  SET a.occupant= 1 +a.occupant ,  a.description = \'XS 12345 \' + a.description RETURN a.description, a.name, a.occupant",  "params" : { }}'
+    var text = {
+        "query": "MATCH (a:CarPark) WHERE a.name = 'Main' SET a.occupant= 1 +a.occupant ,  a.description = 'XS 12345' + a.description RETURN a.description, a.name, a.occupant",
+        "params": {}
+    };
     $.ajax({
         type: "POST",
         url: "http://13.59.242.159:7474/db/data/cypher?includeStats=true",
