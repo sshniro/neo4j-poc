@@ -4,6 +4,7 @@ popoto.graph.DISABLE_COUNT = true;
 var positionPredifinedConstraints = [];
 var employeeConstraints = [];
 var carConstraints = [];
+var skillConstraints = [];
 
 function imageWidth(node, mul) {
     var min = 50;
@@ -175,7 +176,7 @@ popoto.provider.nodeProviders = {
         }
     },
     "Employee": {
-        "returnAttributes": ["name", "car"],
+        "returnAttributes": ["name", "car", "isBusy"],
         "constraintAttribute": "name",
         // "autoExpandRelations": true,
         "getDisplayType": function (node) {
@@ -230,6 +231,9 @@ popoto.provider.nodeProviders = {
         "returnAttributes": ["name"],
         "constraintAttribute": "name",
         "autoExpandRelations": true,
+        "getPredefinedConstraints": function (node) {
+            return skillConstraints;
+        },
         "getDisplayType": function (node) {
             return popoto.provider.NodeDisplayTypes.IMAGE;
         },

@@ -73,9 +73,9 @@ MATCH (m:Mitrai),(c:Client)
 CREATE (m)-[r:Clients]->(c) WITH count(*) as dummy
 
 
-create (:Employee{name:"Nirojan", position:"SSE", mobile: "0779823445", email : "nselvanathan@mitrai.com", car:"CAU-5076", isBusy:true})
+create (:Employee{name:"Nirojan", position:"SSE", mobile: "0779823445", email : "nselvanathan@mitrai.com", isBusy:true})
 create (:Employee{name:"Anusha", position:"TL", mobile: "0773333333", email : "anusha@mitrai.com", isBusy:false })
-create (:Employee{name:"Heshawa", position:"SSE", email: "Heshawa@mitrai.com", isBusy:false})
+create (:Employee{name:"Heshawa", position:"SSE", email: "Heshawa@mitrai.com", isBusy:false, car:"CAU-5076"})
 create (:Employee{name:"Madhuka", position:"TL", mobile : "0773333333", email : "madhuka@mitrai.com", isBusy:false})
 create (:Employee{name:"Priyashani", position:"ASE", mobile : "0773333333", email : "Priyashani@mitrai.com", isBusy:false})
 create (:Employee{name:"Prabod", position:"ASE", mobile : "0773333333", email : "Prabod@mitrai.com", isBusy:false})
@@ -115,7 +115,7 @@ create (:Project{name:"RnD"})
 create (:ProjectTypes{name:"Integration"})
 create (:ProjectTypes{name:"Product"})
 
-create (:CarPark{name:"New Building", capacity:10, occupant:0,description:""})
+create (:CarPark{name:"New Building", capacity:10, occupant:2,description:"E CAU 5076"})
 create (:CarPark{name:"Old Building", capacity:10, occupant:0,description:""})
 create (:CarPark{name:"Main", capacity:10, occupant:0,description:""})
 
@@ -285,4 +285,4 @@ create (n)-[:position]->(p) WITH count(*) as dummy
 Match (n:Employee{name:"Anusha"}),(p:Position{name:"TL"})
 create (n)-[:position]->(p) WITH count(*) as dummy
 
-Match (n:Employee{name:"Nirojan"}),(v:Vehicle{name:"CAU-5076"}) create (n)-[:owns]->(v)
+Match (n:Employee{name:"Heshawa"}),(v:Vehicle{name:"CAU-5076"}) create (n)-[:owns]->(v)

@@ -49,7 +49,16 @@ function updateCarPark(value, park) {
 function resolveIntent(data) {
     if(data.result.metadata.intentName == "interview_schedule") {
         positionPredifinedConstraints = ["$identifier.name IN [\"" + data.result.parameters.positions + "\"]"];
-        employeeConstraints = ["$identifier.position IN [\"" + data.result.parameters.positions + "\"]"];
+
+        if(data.result.parameters.skills){
+            skillConstraints = ["$identifier.name IN [\"" + data.result.parameters.skills + "\"]"];
+        }
+        employeeConstraints = ["$identifier.position IN [\"" + data.result.parameters.positions + "\"] AND $identifier.isBusy IN [false]"];
+        if(data.result.parameters.availability){
+            employeeConstraints = ["$identifier.position IN [\"" + data.result.parameters.positions + "\"]"];
+        }
+
+        debugger;
         console.log('predified', positionPredifinedConstraints);
         console.log('query is', positionPredifinedConstraints);
         popoto.provider.nodeProviders.Employee["autoExpandRelations"] = true;
@@ -68,6 +77,7 @@ function resolveIntent(data) {
     if(data.result.metadata.intentName == "search_car") {
         debugger;
         carConstraints = ["$identifier.name IN [\"" + data.result.parameters.cars + "\"]"];
+        employeeConstraints = ["$identifier.car IN [\"" + data.result.parameters.cars + "\"]"];
         console.log('employee constrai', carConstraints);
         popoto.provider.nodeProviders.Employee["autoExpandRelations"] = true;
         updateTheGraph("Employee")
