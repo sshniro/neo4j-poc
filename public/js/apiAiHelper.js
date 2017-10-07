@@ -21,6 +21,28 @@ function send(value) {
 //        setResponse("Loading...");
 }
 
+function updateCarPark(value, park) {
+    // console.log('Update carpark', value);
+    // var text = {  query : "MATCH (a:CarPark) WHERE a.name = 'Main' SET a.occupant= 1 +a.occupant ,  a.description = 'XS 12345' + a.description RETURN a.description, a.name, a.occupant\",  \"params\" : { }};
+    var text = '{ "query" : "MATCH (a:CarPark) WHERE a.name =\'Main\'  SET a.occupant= 1 +a.occupant ,  a.description = \'XS 12345 \' + a.description RETURN a.description, a.name, a.occupant",  "params" : { }}'
+    $.ajax({
+        type: "POST",
+        url: "http://13.59.242.159:7474/db/data/cypher?includeStats=true",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        headers: {
+            "Authorization": "Basic  bmVvNGo6YXdz"
+        },
+        data: JSON.stringify({ query: text }),
+        success: function(data) {
+            console.log('Response', data);
+        },
+        error: function() {
+            console.log('Error response', data);
+        }
+    });
+}
+
 function resolveIntent(data) {
     if(data.result.metadata.intentName == "interview_schedule") {
         positionPredifinedConstraints = ["$identifier.name IN [\"" + data.result.parameters.positions + "\"]"];
