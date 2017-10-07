@@ -73,7 +73,7 @@ MATCH (m:Mitrai),(c:Client)
 CREATE (m)-[r:Clients]->(c) WITH count(*) as dummy
 
 
-create (:Employee{name:"Nirojan", position:"SSE", mobile: "0779823445", email : "nselvanathan@mitrai.com"})
+create (:Employee{name:"Nirojan", position:"SSE", mobile: "0779823445", email : "nselvanathan@mitrai.com", car:"CAU-5076"})
 create (:Employee{name:"Anusha", position:"TL", mobile: "0773333333", email : "anusha@mitrai.com"})
 create (:Employee{name:"Heshawa", position:"SSE", email: "Heshawa@mitrai.com"})
 create (:Employee{name:"Madhuka", position:"TL", mobile : "0773333333", email : "madhuka@mitrai.com"})
@@ -115,7 +115,7 @@ create (:Project{name:"RnD"})
 create (:ProjectTypes{name:"Integration"})
 create (:ProjectTypes{name:"Product"})
 
-create (:CarPark{name:"New Building"})
+create (:CarPark{name:"New Building", capacity:10, occupant:0,description:""})
 create (:CarPark{name:"Old Building"})
 create (:CarPark{name:"Main"})
 

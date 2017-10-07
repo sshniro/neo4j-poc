@@ -31,6 +31,23 @@ function resolveIntent(data) {
         updateTheGraph("Employee")
     }
 
+    if(data.result.metadata.intentName == "employee_name") {
+        debugger;
+        employeeConstraints = ["$identifier.name IN [\"" + data.result.parameters.employee_name + "\"]"];
+        console.log('employee constrai', employeeConstraints);
+        popoto.provider.nodeProviders.Employee["autoExpandRelations"] = true;
+        updateTheGraph("Employee")
+    }
+
+
+    if(data.result.metadata.intentName == "search_car") {
+        debugger;
+        carConstraints = ["$identifier.name IN [\"" + data.result.parameters.cars + "\"]"];
+        console.log('employee constrai', carConstraints);
+        popoto.provider.nodeProviders.Employee["autoExpandRelations"] = true;
+        updateTheGraph("Employee")
+    }
+
 
     // d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
     // popoto.taxonomy.createTaxonomyPanel();

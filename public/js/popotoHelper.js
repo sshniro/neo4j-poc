@@ -3,6 +3,7 @@ popoto.graph.DISABLE_COUNT = true;
 
 var positionPredifinedConstraints = [];
 var employeeConstraints = [];
+var carConstraints = [];
 
 function imageWidth(node, mul) {
     var min = 50;
@@ -71,7 +72,7 @@ popoto.provider.nodeProviders = {
     "Location": {
         "returnAttributes": ["name"],
         "constraintAttribute": "name",
-        // "autoExpandRelations": true,
+        "autoExpandRelations": true,
         "getIsTextDisplayed": function (node) {
             return false;
         },
@@ -103,7 +104,7 @@ popoto.provider.nodeProviders = {
     "Buildings": {
         "returnAttributes": ["name"],
         "constraintAttribute": "name",
-        "autoExpandRelations": true,
+        // "autoExpandRelations": true,
         "getIsTextDisplayed": function (node) {
             return false;
         },
@@ -174,7 +175,7 @@ popoto.provider.nodeProviders = {
         }
     },
     "Employee": {
-        "returnAttributes": ["name"],
+        "returnAttributes": ["name", "car"],
         "constraintAttribute": "name",
         // "autoExpandRelations": true,
         "getDisplayType": function (node) {
@@ -260,7 +261,10 @@ popoto.provider.nodeProviders = {
         },
         "getImageHeight": function (node) {
             return getImageHeight(node);
-        }
+        },
+        "getPredefinedConstraints": function (node) {
+            return carConstraints;
+        },
     },
     "Service": {
         "returnAttributes": ["name"],
